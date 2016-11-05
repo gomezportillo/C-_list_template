@@ -1,16 +1,19 @@
 # -*- mode:make -*-
 
-DIRSRC := src/
-DIRHEA := include/
-DIROBJ := obj/
-DIREXE := exe/
+DIRSRC	:= src/
+DIRHEA	:= include/
+DIROBJ	:= obj/
+DIREXE	:= exe/
 
-CXX := g++
-CXXFLAGS 	:= -I $(DIRHEA) -Wall
-LDFLAGS 	:=
+CXX 		:= g++
+CXXFLAGS:= -I $(DIRHEA) -Wall -std=gnu++11
+LDFLAGS :=
 
-EXEC	:= $(DIREXE)main
-OBJ		:= $(patsubst $(DIRSRC)%.cpp, $(DIROBJ)%.o, $(wildcard $(DIRSRC)*.cpp))
+EXCLUDE	:= $(DIRSRC)mainList.cpp $(DIRSRC)mainInheritance.cpp
+
+EXEC		:= $(DIREXE)main
+SRC			:= $(filter-out $(EXCLUDE), $(wildcard $(DIRSRC)*.cpp))
+OBJ			:= $(patsubst $(DIRSRC)%.cpp, $(DIROBJ)%.o, $(SRC))
 
 all: $(EXEC)
 

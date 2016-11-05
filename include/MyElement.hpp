@@ -3,10 +3,7 @@
 template <class T> class MyElement
 {
 public:
-  MyElement (const T &e)
-  {
-    _element = e;
-  }
+  MyElement (const T &e): _element(e) {}
 
   ~MyElement ()
   {
